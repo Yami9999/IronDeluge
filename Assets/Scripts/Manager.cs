@@ -3,7 +3,8 @@
 public class Manager : MonoBehaviour
 {
     // Player Prefab.
-    public GameObject player;
+    public GameObject player1;
+    public GameObject player2;
 
     // Title.
     private GameObject title;
@@ -17,7 +18,7 @@ public class Manager : MonoBehaviour
     void Update ()
     {
         // When isn't during the game, if press X key, return true.
-        if (IsPlaying () == false && Input.GetKeyDown (KeyCode.X)) {
+        if (IsPlaying () == false && Input.GetKeyDown(KeyCode.X)) {
             GameStart ();
         }
     }
@@ -26,7 +27,8 @@ public class Manager : MonoBehaviour
     {
         // When start the game, hidden title and appear the player.
         title.SetActive (false);
-        Instantiate (player, player.transform.position, player.transform.rotation);
+        Instantiate (player1, player1.transform.position, player1.transform.rotation);
+        Instantiate (player2, player2.transform.position, player2.transform.rotation);
     }
 
     public void GameOver ()
