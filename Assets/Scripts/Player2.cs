@@ -5,6 +5,7 @@ public class Player2 : MonoBehaviour
 {
 	// Spaceship component.
 	Spaceship spaceship;
+	Rigidbody2D rb;
 	
 	IEnumerator Start ()
 	{
@@ -25,24 +26,25 @@ public class Player2 : MonoBehaviour
 		}
 	}
 	
-	void Update ()
+	void FixedUpdate ()
 	{
+		rb = GetComponent<Rigidbody2D>();
 		// Movements
 		if (Input.GetKey("up"))
         {
-            transform.Translate(Vector3.up * spaceship.speed * Time.deltaTime);
+           rb.AddForce(Vector2.up * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         }
         if (Input.GetKey("down"))
         {
-            transform.Translate(Vector3.down * spaceship.speed * Time.deltaTime);
+            rb.AddForce(Vector2.down * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         }
         if (Input.GetKey("left"))
         {
-            transform.Translate(Vector3.left * spaceship.speed * Time.deltaTime);
+            rb.AddForce(Vector2.left * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         }
         if (Input.GetKey("right"))
         {
-            transform.Translate(Vector3.right * spaceship.speed * Time.deltaTime);
+            rb.AddForce(Vector2.right * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         }
 	}
 	

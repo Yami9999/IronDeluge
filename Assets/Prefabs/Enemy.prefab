@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb048fd830b3caf41b1bdf061892b1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.25
   shotDelay: 1
   bullet: {fileID: 1626841763203836, guid: 214eccdd9d7e8274f8139757ecdb2918, type: 2}
   canShot: 1

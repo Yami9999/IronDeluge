@@ -11,11 +11,12 @@ public class Player1 : MonoBehaviour
 	{
 		// Acquire Spaceship component.
 		spaceship = GetComponent<Spaceship>();
-		
+		rb = GetComponent<Rigidbody2D>();
+
 		while (true) {
 			
 			// Make bullet at the same Player as a location and angle.
-			spaceship.Shot (transform);
+			spaceship.Shot(transform);
 			
 			// Sound shot SE.
 			GetComponent<AudioSource>().Play();
@@ -25,25 +26,16 @@ public class Player1 : MonoBehaviour
 		}
 	}
 	
-	void Update ()
+	void FixedUpdate ()
 	{
-		// Movements
 		if (Input.GetKey("z"))
-        {
-            transform.Translate(Vector3.up * spaceship.speed * Time.deltaTime);
-        }
+           rb.AddForce(Vector2.up * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("s"))
-        {
-            transform.Translate(Vector3.down * spaceship.speed * Time.deltaTime);
-        }
+            rb.AddForce(Vector2.down * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("q"))
-        {
-            transform.Translate(Vector3.left * spaceship.speed * Time.deltaTime);
-        }
+            rb.AddForce(Vector2.left * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("d"))
-        {
-            transform.Translate(Vector3.right * spaceship.speed * Time.deltaTime);
-        }
+            rb.AddForce(Vector2.right * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
 	}
 	
 	// Invoke when hit in a moment.

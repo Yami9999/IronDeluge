@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-	// Scroll speed
-	public float speed = 0.1f;
+	public GameObject background;
+	public float speed;
 	
-	void Update ()
+	void Start()
+	{}
+
+	void Update()
 	{
-		// Value of Y change from 0 to 1 by time. return to 0 if it becomes 1 and repeat.
-		float y = Mathf.Repeat (Time.time * speed, 1);
-		
-		// Create offset that shift value of Y
-		Vector2 offset = new Vector2 (0, y);
-		
-		// Set up offset to materials
-		GetComponent<Renderer>().sharedMaterial.SetTextureOffset ("_MainTex", offset);
+		background.transform.Translate(0, -(speed * Time.deltaTime), 0);
+		if (background.transform.position.y <= -10.75)
+			background.transform.Translate(0, 20.75f, 0);
 	}
 }
