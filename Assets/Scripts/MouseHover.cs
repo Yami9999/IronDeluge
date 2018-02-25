@@ -6,25 +6,17 @@ public class MouseHover : MonoBehaviour
 {
 	void Start()
 	{
-		// Couleur initiale = bleu
-		GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
+		GetComponent<Renderer>().material.color = new Color32(0,150,200,255);	// Set color to blue
 	}
 
-	// Quand la souris sur bouton
-	void OnMouseEnter()
+	void OnMouseEnter()															// Mouse enter function
 	{
-		// Changer la couleur pour bleu clair
-		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);
+		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);		// Change color to light blue
 	}
 
-	// Quand la souris quitte le bouton
-	void OnMouseExit()
+	void OnMouseExit()																// Mouse exit function
 	{	
-		// Si les options ne sont pas affichées
-		if(MainMenu.settingsIsActive == false)
-		{
-			// Rétablir la couleur pour bleu
-			GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
-		}
+		if(MainMenu.settingsMenuIsActive == false)									// If settings menu is inactive
+			GetComponent<Renderer>().material.color = new Color32(0,150,200,255);	// Change back oolor to blue
 	}
 }

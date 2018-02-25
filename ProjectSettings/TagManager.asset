@@ -19,7 +19,7 @@ TagManager:
   - Bullet (Enemy)
   - DestroyArea
   - Wall
-  - 
+  - EnemyWall
   - 
   - 
   - 
@@ -38,15 +38,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Background
+    uniqueID: 3535923125
     locked: 0
   - name: Player
     uniqueID: 3308777655
     locked: 0
+  - name: Enemy
+    uniqueID: 996164021
+    locked: 0
   - name: Bullet
     uniqueID: 901846559
     locked: 0
+  - name: Bullet (Enemy)
+    uniqueID: 1837025923
+    locked: 0
   - name: UI
     uniqueID: 800955685
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

@@ -8,68 +8,53 @@ public class MainMenu : MonoBehaviour
 	public bool isPlayButton;
 	public bool isSettingsButton;
 	public bool isExitButton;
-	public GameObject SettingsWindow;
+	public GameObject SettingsMenu;
 	public GameObject PlayButton;
 	public GameObject ExitButton;
-	public static bool settingsIsActive;
+	public static bool settingsMenuIsActive;
 
 	void Start()
-    {
-		// Initialisation
-		settingsIsActive = false;
+	{
+		settingsMenuIsActive = false;
 	}
 
-	// Quand clic
-	void OnMouseUp()
+	void OnMouseUp()									// On click function	
 	{
-		// Si bouton Play
-		if(isPlayButton)
+		if(isPlayButton)								// If button is "Play"
+			SceneManager.LoadScene(1);					// Load game
+		if(isSettingsButton)							// If button is "Settings"
 		{
-			// Lancer le jeu
-			SceneManager.LoadScene(1);
+			if(SettingsMenu.activeInHierarchy == false)	// If settings menu is off
+				OpenSettings();							// Open settings
+			else										// If settings menu is on
+				CloseSettings();						// Close settings
 		}
-
-		// Si bouton d'options
-		if(isSettingsButton)
-		{
-			// Maintenir la couleur rouge sur le bouton
-			GetComponent<Renderer>().material.color = new Color32(200,0,0,255);
-
-			// Inverser la visibilité des options
-			SettingsWindow.GetComponent<Renderer>().enabled = !SettingsWindow.GetComponent<Renderer>().enabled;
-
-			// Si options visibles
-			if(SettingsWindow.GetComponent<Renderer>().enabled == true)
-			{
-				// Signaler à MouseHover.cs
-				settingsIsActive = true;
-				// Désactiver les hitbox des autres boutons
-				PlayButton.GetComponent<BoxCollider2D>().enabled = false;
-				ExitButton.GetComponent<BoxCollider2D>().enabled = false;
-				// Couleur = gris
-				PlayButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);
-				ExitButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);
-			}
-
-			// Si options non visibles
-			else
-			{
-				// Signaler à MouseHover.cs
-				settingsIsActive = false;
-				// Réactiver les hitbox des autres boutons
-				PlayButton.GetComponent<BoxCollider2D>().enabled = true;
-				ExitButton.GetComponent<BoxCollider2D>().enabled = true;
-				// Rétablir les couleurs
-				PlayButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
-				ExitButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
-			}
-		}
-
-		// Si bouton Exit
-		if(isExitButton)
-		{
-			// Quitter le jeu
-			Application.Quit();
-		}
+		if(isExitButton)								// If button is "Exit"
+			Application.Quit();							// Quit the game
 	} 
+
+	void OpenSettings()																	// Open settings functio
+	{
+		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);				// Maintain red color on button
+		SettingsMenu.SetActive(true);													// Turn on settings menu
+		settingsMenuIsActive = true;													// Warn MouseHover.cs that settings are now active
+		PlayButton.GetComponent<BoxCollider2D>().enabled = false;						// Turn off other buttons' hitboxes
+		ExitButton.GetComponent<BoxCollider2D>().enabled = false;
+		PlayButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);	// Change other buttons to grey
+		ExitButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);
+		return;																			// Avoid open/close on a same tick
+	}
+
+	void CloseSettings()																	// Close settings function
+	{
+		SettingsMenu.SetActive(false);														// Turn off settings menu
+		settingsMenuIsActive = false;														// Warn MouseHover.cs that settings are now inactive
+		PlayButton.GetComponent<BoxCollider2D>().enabled = true;							// Restore other buttons' hitboxes
+		ExitButton.GetComponent<BoxCollider2D>().enabled = true;
+		PlayButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);	// Restore other buttons' color
+		ExitButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
+		return;
+	}
 }
+
+

@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    void OnAnimationFinish()
+	private AudioSource[] music;
+
+    void Start()
     {
-        Destroy(gameObject);
+        music = GameObject.Find("SoundManager").GetComponents<AudioSource>(); 	            // Get sounds
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[7]);	// Play explosion sound
+    }
+
+    void OnAnimationFinish()    // End of animation function
+    {
+        Destroy(gameObject);    // Delete explosion
     }
 }

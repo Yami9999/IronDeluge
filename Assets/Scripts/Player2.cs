@@ -3,75 +3,52 @@ using System.Collections;
 
 public class Player2 : MonoBehaviour
 {
-	// Spaceship component.
-	Spaceship spaceship;
-	Rigidbody2D rb;
+	public float speed;
+	public GameObject Bullet;
+	public GameObject Explosion;
+	public GameObject GameOverScreen;
+	private AudioSource[] music;
 	
-	IEnumerator Start ()
+	void Start()
 	{
-		// Acquire Spaceship component.
-		spaceship = GetComponent<Spaceship> ();
-		
-		while (true)
-        {
-			
-			// Make bullet at the same Player as a location and angle.
-			spaceship.Shot (transform);
-			
-			// Sound shot SE.
-			GetComponent<AudioSource>().Play();
-			
-			// Wait for input shotDelay second.
-			yield return new WaitForSeconds (spaceship.shotDelay);
-		}
+		music = GameObject.Find("SoundManager").GetComponents<AudioSource>(); 	// Get musics and sounds
 	}
 	
-	void FixedUpdate ()
+	void Update()
 	{
-		rb = GetComponent<Rigidbody2D>();
-		// Movements
-		if (Input.GetKey("up"))
-        {
-           rb.AddForce(Vector2.up * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
-        }
+		if (Input.GetKey("up"))																					// Movements
+        	GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("down"))
-        {
-            rb.AddForce(Vector2.down * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
-        }
+            GetComponent<Rigidbody2D>().AddForce(Vector2.down * speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("left"))
-        {
-            rb.AddForce(Vector2.left * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
-        }
+            GetComponent<Rigidbody2D>().AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Force);
         if (Input.GetKey("right"))
-        {
-            rb.AddForce(Vector2.right * spaceship.speed * Time.deltaTime, ForceMode2D.Force);
-        }
+            GetComponent<Rigidbody2D>().AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Force);
+		if (Input.GetKeyDown("[1]"))																			// If shoot button is pressed
+		{
+			Instantiate(Bullet, transform.position, transform.rotation);										// Create bullet
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[8]);					// Play fire sound
+		}
 	}
-	
-	// Invoke when hit in a moment.
-	void OnTriggerEnter2D (Collider2D c)
+
+	void OnTriggerEnter2D(Collider2D thing)														// On hit function
 	{
-		// Acquire layer name.
-		string layerName = LayerMask.LayerToName(c.gameObject.layer);
-		
-		// If layer name is "Bullet (Enemy)", delete bullet.
-		if( layerName == "Bullet (Enemy)")
+		string layerName = LayerMask.LayerToName(thing.gameObject.layer);						// Get layer name
+		if(layerName == "Bullet (Enemy)" || layerName == "Enemy")								// If layer is an enemy bullet or an enemy
 		{
-			// Delete bullet.
-			Destroy(c.gameObject);
+			Instantiate(Explosion, transform.position, transform.rotation);						// Explode
+			GetComponent<SpriteRenderer>().enabled = false;										// Hide player sprite
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[3]);	// Stop battle musics
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[4]);
+			StartCoroutine(GameOver());															// Start the game over timer
 		}
-		
-		// If layer name is "Bullet (Enemy)" or "Enemy", explode Player.
-		if( layerName == "Bullet (Enemy)" || layerName == "Enemy")
-		{
-			// Reference Manager component in Scene and acquire, invoke GameOver method.
-			FindObjectOfType<Manager>().GameOver();
-			
-			// Explosion.
-			spaceship.Explosion();
-			
-			// Delete Player.
-			Destroy (gameObject);
-		}
+	}
+
+	IEnumerator GameOver()																					// Game over function
+	{
+		yield return new WaitForSeconds(1);																	// Wait one second
+		Instantiate(GameOverScreen, GameOverScreen.transform.position, GameOverScreen.transform.rotation);	// Create a game over screen
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[6]);					// Play player 2 game over
+		Destroy(gameObject);																				// Delete player
 	}
 }
