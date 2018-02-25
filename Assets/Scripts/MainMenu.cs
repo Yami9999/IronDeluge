@@ -5,23 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-	public bool isPlayButton;
+	public bool isSoloButton;
+	public bool isVersusButton;
 	public bool isSettingsButton;
 	public bool isExitButton;
 	public GameObject SettingsMenu;
-	public GameObject PlayButton;
+	public GameObject SoloButton;
+	public GameObject VersusButton;
 	public GameObject ExitButton;
 	public static bool settingsMenuIsActive;
 
 	void Start()
 	{
 		settingsMenuIsActive = false;
+		SoundManager.solo = false;
 	}
 
 	void OnMouseUp()									// On click function	
 	{
-		if(isPlayButton)								// If button is "Play"
+		if(isSoloButton)								// If button is "Solo"
+		{
+			SoundManager.solo = true;					// Warn the game manager
 			SceneManager.LoadScene(1);					// Load game
+		}
+		if(isVersusButton)								// If button is "Versus"
+		{
+			SoundManager.solo = false;					// Warn the game manager
+			SceneManager.LoadScene(1);					// Load game
+		}
 		if(isSettingsButton)							// If button is "Settings"
 		{
 			if(SettingsMenu.activeInHierarchy == false)	// If settings menu is off
@@ -33,25 +44,29 @@ public class MainMenu : MonoBehaviour
 			Application.Quit();							// Quit the game
 	} 
 
-	void OpenSettings()																	// Open settings functio
+	void OpenSettings()																		// Open settings functio
 	{
-		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);				// Maintain red color on button
-		SettingsMenu.SetActive(true);													// Turn on settings menu
-		settingsMenuIsActive = true;													// Warn MouseHover.cs that settings are now active
-		PlayButton.GetComponent<BoxCollider2D>().enabled = false;						// Turn off other buttons' hitboxes
+		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);					// Maintain red color on button
+		SettingsMenu.SetActive(true);														// Turn on settings menu
+		settingsMenuIsActive = true;														// Warn MouseHover.cs that settings are now active
+		SoloButton.GetComponent<BoxCollider2D>().enabled = false;							// Turn off other buttons' hitboxes
+		VersusButton.GetComponent<BoxCollider2D>().enabled = false;
 		ExitButton.GetComponent<BoxCollider2D>().enabled = false;
-		PlayButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);	// Change other buttons to grey
+		SoloButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);		// Change other buttons to grey
+		VersusButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);
 		ExitButton.GetComponent<Renderer>().material.color = new Color32(50,50,50,255);
-		return;																			// Avoid open/close on a same tick
+		return;																				// Avoid open/close on a same tick
 	}
 
 	void CloseSettings()																	// Close settings function
 	{
 		SettingsMenu.SetActive(false);														// Turn off settings menu
 		settingsMenuIsActive = false;														// Warn MouseHover.cs that settings are now inactive
-		PlayButton.GetComponent<BoxCollider2D>().enabled = true;							// Restore other buttons' hitboxes
+		SoloButton.GetComponent<BoxCollider2D>().enabled = true;							// Restore other buttons' hitboxes
+		VersusButton.GetComponent<BoxCollider2D>().enabled = true;
 		ExitButton.GetComponent<BoxCollider2D>().enabled = true;
-		PlayButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);	// Restore other buttons' color
+		SoloButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);	// Restore other buttons' color
+		VersusButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
 		ExitButton.GetComponent<Renderer>().material.color = new Color32(0,150,200,255);
 		return;
 	}

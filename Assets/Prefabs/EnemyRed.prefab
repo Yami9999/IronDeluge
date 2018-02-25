@@ -49,11 +49,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4935306063630210}
-  - component: {fileID: 212369162001832082}
-  - component: {fileID: 50132868440287042}
-  - component: {fileID: 95752702503660344}
   - component: {fileID: 114403055458584680}
-  - component: {fileID: 60313773838331956}
+  - component: {fileID: 212369162001832082}
+  - component: {fileID: 95752702503660344}
+  - component: {fileID: 61168056220361004}
+  - component: {fileID: 50132868440287042}
   m_Layer: 9
   m_Name: EnemyRed
   m_TagString: Untagged
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637894218194120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.444448, y: -3.563565, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4108076714781016}
@@ -151,8 +151,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60313773838331956
-PolygonCollider2D:
+--- !u!61 &61168056220361004
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -163,7 +163,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.00882411}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -173,14 +173,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.228894, y: 0.2437172}
-      - {x: -0.2595575, y: -0.15349555}
-      - {x: -0.12123251, y: -0.28782582}
-      - {x: 0.122522, y: -0.2897787}
-      - {x: 0.25615048, y: -0.17659307}
-      - {x: 0.228894, y: 0.24800873}
+  serializedVersion: 2
+  m_Size: {x: 0.48937273, y: 0.5187869}
+  m_EdgeRadius: 0
 --- !u!95 &95752702503660344
 Animator:
   serializedVersion: 3
@@ -209,8 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd01a5c0c505cf48a24647a34acc294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
+  speed: 0.75
   fireRate: 2
+  score: 20
   bullet: {fileID: 1143780688082568, guid: 214eccdd9d7e8274f8139757ecdb2918, type: 2}
   explosion: {fileID: 1141632765255872, guid: ecf97e7e41487c747ae4f9a7c82232bf, type: 2}
 --- !u!212 &212369162001832082

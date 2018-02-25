@@ -17,9 +17,9 @@ TagManager:
   - Enemy
   - Bullet (Player)
   - Bullet (Enemy)
-  - DestroyArea
   - Wall
-  - EnemyWall
+  - OutOfBoundsWall
+  - PlayerWall
   - 
   - 
   - 

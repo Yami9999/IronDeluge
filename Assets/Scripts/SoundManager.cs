@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+	static public bool solo;
 	static SoundManager exist;
 	private AudioSource[] music;
 	//PlayerPrefs.SetFloat("soundVolume", currentVolume);  //Note that you need to keep the volume in a variable called currentVolume or whatever you name it.

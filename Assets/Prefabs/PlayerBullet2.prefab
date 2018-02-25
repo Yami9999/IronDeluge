@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4077922458645370}
   - component: {fileID: 212688289108120112}
-  - component: {fileID: 60242186731246978}
+  - component: {fileID: 61361621632326232}
   m_Layer: 10
   m_Name: Bullet1
   m_TagString: Untagged
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4683914803359388}
   - component: {fileID: 212879286299462772}
-  - component: {fileID: 60499371813317414}
+  - component: {fileID: 61115196411080372}
   m_Layer: 10
   m_Name: Bullet2
   m_TagString: Untagged
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309814212322088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0270524, y: 1.1583818, z: 0}
+  m_LocalPosition: {x: -0.9282345, y: -3.6218958, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4077922458645370}
@@ -123,38 +123,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60242186731246978
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452185090010876}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.0132511705, y: 0.08000004}
-      - {x: -0.034298047, y: 0.05418718}
-      - {x: -0.021625623, y: -0.082093716}
-      - {x: 0.020689622, y: -0.08176172}
-      - {x: 0.034298077, y: 0.05790627}
-      - {x: 0.01639165, y: 0.08000004}
---- !u!60 &60499371813317414
-PolygonCollider2D:
+--- !u!61 &61115196411080372
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -162,10 +132,10 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0010180175, y: -0.0010180846}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,14 +145,34 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.0132511705, y: 0.08000004}
-      - {x: -0.034298047, y: 0.05418718}
-      - {x: -0.021625623, y: -0.082093716}
-      - {x: 0.020689622, y: -0.08176172}
-      - {x: 0.034298077, y: 0.05790627}
-      - {x: 0.01639165, y: 0.08000004}
+  serializedVersion: 2
+  m_Size: {x: 0.060234368, y: 0.15796383}
+  m_EdgeRadius: 0
+--- !u!61 &61361621632326232
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452185090010876}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.002036132}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.058198452, y: 0.15592773}
+  m_EdgeRadius: 0
 --- !u!114 &114369704586959170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,7 +218,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 901846559
-  m_SortingLayer: 3
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3945fbe854cb76498cd800b3b00026d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,7 +262,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 901846559
-  m_SortingLayer: 3
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3945fbe854cb76498cd800b3b00026d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

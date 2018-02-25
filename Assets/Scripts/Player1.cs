@@ -6,7 +6,8 @@ public class Player1 : MonoBehaviour
 	public float speed;
 	public GameObject Bullet;
 	public GameObject Explosion;
-	public GameObject GameOverScreen;
+	public GameObject GameOverScreenSolo;
+	public GameObject GameOverScreenVersus;
 	private AudioSource[] music;
 	
 	void Start()
@@ -44,11 +45,19 @@ public class Player1 : MonoBehaviour
 		}
 	}
 
-	IEnumerator GameOver()																					// Game over function
+	IEnumerator GameOver()																											// Game over function
 	{
-		yield return new WaitForSeconds(1);																	// Wait one second
-		Instantiate(GameOverScreen, GameOverScreen.transform.position, GameOverScreen.transform.rotation);	// Create a game over screen
-		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[5]);					// Play player 1 game over
-		Destroy(gameObject);																				// Delete player
+		yield return new WaitForSeconds(1);																							// Wait one second
+		if (SoundManager.solo)                                                     													// If game is solo
+		{
+			Instantiate(GameOverScreenSolo, GameOverScreenSolo.transform.position, GameOverScreenSolo.transform.rotation);			// Create a solo game over screen
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[6]);										// Play player 2 game over music
+		}	
+		else																														// If game is versus
+		{
+			Instantiate(GameOverScreenVersus, GameOverScreenVersus.transform.position, GameOverScreenVersus.transform.rotation);	// Create a game over screen
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[5]);										// Play player 1 game over music
+		}
+		Destroy(gameObject);																										// Delete player
 	}
 }

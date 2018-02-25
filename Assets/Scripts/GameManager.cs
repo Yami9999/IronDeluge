@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player2;
     public GameObject EnemySpawner;
     public GameObject PauseMenu;
+    public GameObject ScoreScreen;
     public static bool isPaused;
     public static GameObject PauseInstance;
     private GameObject PauseIntro;
@@ -43,12 +44,15 @@ public class GameManager : MonoBehaviour
     {
         PauseIntro.SetActive(false);                                                                    // Turn off the intro pause
         GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[2]);               // Stop pre battle music
-        if (Random.value < 0.5)
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[3]);           // Randomly play battle music 1 or 2
+        if (Random.value < 0.5)                                                                         // Randomly play battle music 1 or 2
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[3]);
         else
             GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[4]);
         Instantiate(Player1, Player1.transform.position, Player1.transform.rotation);                   // Create player 1
-        Instantiate(Player2, Player2.transform.position, Player2.transform.rotation);                   // Create player 2
+        if (SoundManager.solo)                                                                          // If game is solo
+            Instantiate(ScoreScreen, ScoreScreen.transform.position, ScoreScreen.transform.rotation);   // Create score screen
+        else                                                                                            // If game is versus
+            Instantiate(Player2, Player2.transform.position, Player2.transform.rotation);               // Create player 2
         Instantiate(EnemySpawner, EnemySpawner.transform.position, EnemySpawner.transform.rotation);    // Create the enemy spawner
     }
 

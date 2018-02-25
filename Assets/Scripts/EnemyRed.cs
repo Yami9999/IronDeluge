@@ -5,6 +5,7 @@ public class EnemyRed : MonoBehaviour
 {
     public float speed;
     public float fireRate;
+	public int score;
     public GameObject bullet;
     public GameObject explosion;
 	private float lastShot;
@@ -17,7 +18,7 @@ public class EnemyRed : MonoBehaviour
 	void Update()
 	{
 		GetComponent<Rigidbody2D>().AddForce(Vector2.down * speed * Time.deltaTime, ForceMode2D.Force);	// Move down
-		if(Time.time > lastShot + fireRate)																// If actual time is past last shot time + fire rate
+		if (Time.time > lastShot + fireRate)															// If actual time is past last shot time + fire rate
 		{
 			Instantiate(bullet, transform.GetChild(0).position, transform.GetChild(0).rotation);		// Shoot
 			Instantiate(bullet, transform.GetChild(1).position, transform.GetChild(1).rotation);
@@ -32,6 +33,8 @@ public class EnemyRed : MonoBehaviour
 		if (layerName == "Bullet (Player)" || layerName == "Player")		// If layer is a player bullet or a player
 		{
 			Instantiate(explosion, transform.position, transform.rotation);	// Explode
+			if (SoundManager.solo)											// If game is solo
+				ScoreScreen.score += score;									// Update score
 			Destroy(gameObject);											// Delete enemy
 		}
 		if (layerName == "OutOfBoundsWall")									// If layer is the out of bound wall

@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\EnemyGrey.cs" />
+     <Compile Include="Assets\Scripts\EnemyMissile.cs" />
+     <Compile Include="Assets\Scripts\EnemyPink.cs" />
      <Compile Include="Assets\Scripts\EnemyRed.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Explosion.cs" />
@@ -62,6 +65,7 @@
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player1.cs" />
      <Compile Include="Assets\Scripts\Player2.cs" />
+     <Compile Include="Assets\Scripts\ScoreScreen.cs" />
      <Compile Include="Assets\Scripts\Scrolling.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Spaceship.cs" />

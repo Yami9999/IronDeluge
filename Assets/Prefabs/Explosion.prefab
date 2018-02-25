@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4294367021597412}
+  - component: {fileID: 114874145474945618}
   - component: {fileID: 212597444452086144}
   - component: {fileID: 95284584728963898}
-  - component: {fileID: 114874145474945618}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged

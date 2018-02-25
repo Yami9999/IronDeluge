@@ -287,10 +287,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 207913800}
+  - component: {fileID: 207913805}
+  - component: {fileID: 207913802}
   - component: {fileID: 207913804}
   - component: {fileID: 207913803}
-  - component: {fileID: 207913802}
-  - component: {fileID: 207913805}
   - component: {fileID: 207913801}
   m_Layer: 0
   m_Name: SettingsButton
@@ -306,11 +306,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 207913799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.82, y: -0.23, z: -0.5}
+  m_LocalPosition: {x: -6.82, y: -1.46, z: -0.5}
   m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 1}
   m_Children: []
   m_Father: {fileID: 1274126268}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &207913801
 BoxCollider2D:
@@ -414,11 +414,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00be9d4e96604d409b37979cd1d92ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayButton: 0
+  isSoloButton: 0
+  isVersusButton: 0
   isSettingsButton: 1
   isExitButton: 0
   SettingsMenu: {fileID: 1078307648}
-  PlayButton: {fileID: 387951118}
+  SoloButton: {fileID: 387951118}
+  VersusButton: {fileID: 1454894775}
   ExitButton: {fileID: 554887106}
 --- !u!1 &223887720
 GameObject:
@@ -564,13 +566,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 387951119}
+  - component: {fileID: 387951124}
+  - component: {fileID: 387951121}
   - component: {fileID: 387951123}
   - component: {fileID: 387951122}
-  - component: {fileID: 387951121}
-  - component: {fileID: 387951124}
   - component: {fileID: 387951120}
   m_Layer: 0
-  m_Name: PlayButton
+  m_Name: SoloButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,7 +585,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387951118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.84, y: 1.4, z: -0.5}
+  m_LocalPosition: {x: -6.84, y: 1.43, z: -0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1274126268}
@@ -601,7 +603,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 12.900001, y: -4.655}
+  m_Offset: {x: 13.35, y: -4.655}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -612,7 +614,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.800001, y: 9.31}
+  m_Size: {x: 26.7, y: 9.31}
   m_EdgeRadius: 0
 --- !u!114 &387951121
 MonoBehaviour:
@@ -632,7 +634,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387951118}
-  m_Text: pLAY
+  m_Text: SOLO
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -691,11 +693,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00be9d4e96604d409b37979cd1d92ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayButton: 1
+  isSoloButton: 1
+  isVersusButton: 0
   isSettingsButton: 0
   isExitButton: 0
   SettingsMenu: {fileID: 0}
-  PlayButton: {fileID: 0}
+  SoloButton: {fileID: 0}
+  VersusButton: {fileID: 0}
   ExitButton: {fileID: 0}
 --- !u!1 &471540221
 GameObject:
@@ -918,10 +922,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 554887107}
+  - component: {fileID: 554887112}
+  - component: {fileID: 554887109}
   - component: {fileID: 554887111}
   - component: {fileID: 554887110}
-  - component: {fileID: 554887109}
-  - component: {fileID: 554887112}
   - component: {fileID: 554887108}
   m_Layer: 0
   m_Name: ExitButton
@@ -937,11 +941,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 554887106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.8, y: -1.86, z: -0.5}
+  m_LocalPosition: {x: -6.8, y: -2.86, z: -0.5}
   m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 1}
   m_Children: []
   m_Father: {fileID: 1274126268}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &554887108
 BoxCollider2D:
@@ -1045,11 +1049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00be9d4e96604d409b37979cd1d92ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayButton: 0
+  isSoloButton: 0
+  isVersusButton: 0
   isSettingsButton: 0
   isExitButton: 1
   SettingsMenu: {fileID: 0}
-  PlayButton: {fileID: 0}
+  SoloButton: {fileID: 0}
+  VersusButton: {fileID: 0}
   ExitButton: {fileID: 0}
 --- !u!1 &562717810
 GameObject:
@@ -2260,6 +2266,7 @@ Transform:
   m_Children:
   - {fileID: 1356129042}
   - {fileID: 387951119}
+  - {fileID: 1454894776}
   - {fileID: 207913800}
   - {fileID: 554887107}
   m_Father: {fileID: 0}
@@ -2289,7 +2296,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1356129041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88, y: 3.65, z: -0.5}
+  m_LocalPosition: {x: -6.88, y: 4.18, z: -0.5}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 1274126268}
@@ -2350,6 +2357,149 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &1454894775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1454894776}
+  - component: {fileID: 1454894781}
+  - component: {fileID: 1454894780}
+  - component: {fileID: 1454894779}
+  - component: {fileID: 1454894778}
+  - component: {fileID: 1454894777}
+  m_Layer: 0
+  m_Name: VersusButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454894776
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.84, y: -0.03, z: -0.5}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1274126268}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1454894777
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 19.95, y: -4.655}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 39.9, y: 9.31}
+  m_EdgeRadius: 0
+--- !u!102 &1454894778
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_Text: VERSUS
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 100
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: 70e1fef9256fa084ab430f2a06ba7b6b, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &1454894779
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 70e1fef9256fa084ab430f2a06ba7b6b, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &1454894780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f835074ea71db543aabaa123a5db4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1454894781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1454894775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00be9d4e96604d409b37979cd1d92ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSoloButton: 0
+  isVersusButton: 1
+  isSettingsButton: 0
+  isExitButton: 0
+  SettingsMenu: {fileID: 0}
+  SoloButton: {fileID: 0}
+  VersusButton: {fileID: 0}
+  ExitButton: {fileID: 0}
 --- !u!1 &1469128476
 GameObject:
   m_ObjectHideFlags: 0

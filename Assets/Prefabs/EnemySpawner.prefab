@@ -51,5 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96506c37cf57b2842865f734461d4aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyPink: {fileID: 1062368112367552, guid: 27176e0660ffba84ab2c8f71275df2e2, type: 2}
   EnemyRed: {fileID: 1637894218194120, guid: c2669884a3b30eb43a9ceb97d9cad93e, type: 2}
+  EnemyGrey: {fileID: 1068039254515642, guid: 64c7cd660b6b8e64d932a4335fa7913e, type: 2}
   spawnRate: 2
