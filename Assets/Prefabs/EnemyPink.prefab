@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4752649303637538}
-  - component: {fileID: 114846464712661064}
+  - component: {fileID: 114673412771150312}
   - component: {fileID: 212589242078241438}
   - component: {fileID: 61305435201260182}
   - component: {fileID: 50965436393041116}
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5597153, y: 0.49366736}
   m_EdgeRadius: 0
---- !u!114 &114846464712661064
+--- !u!114 &114673412771150312
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,14 +96,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1062368112367552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f101f977ee3888b41a946f7cd5e7b2bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d8482542e7a97f45be286b6b0dd76e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  fireRate: 1.25
-  turnRate: 0.5
+  isPink: 1
+  isRed: 0
+  isGrey: 0
+  isMissile: 0
+  speed: 2
+  fireRate: 1.75
+  pinkTurnRate: 0.5
   score: 10
   bullet: {fileID: 1391610133064902, guid: d57ccec3636cb7d4db0c410673db3b94, type: 2}
+  greyExtraBullet: {fileID: 0}
   explosion: {fileID: 1141632765255872, guid: ecf97e7e41487c747ae4f9a7c82232bf, type: 2}
 --- !u!212 &212589242078241438
 SpriteRenderer:

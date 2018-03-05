@@ -105,6 +105,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+edd8b566d5d724804342a1afeeeef8cd Assembly-CSharp.dll:.EnemyGrey
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MouseHover
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 375ec84b292af7f9b9b7962763b59561 Assembly-CSharp.dll:.MainMenu
@@ -117,6 +118,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 75f4688218d82edcfe81425ce1232c4f Assembly-CSharp.dll:.Player1
 85e2430b687a4675ef3017a1f46b33ce Assembly-CSharp.dll:.EnemySpawner
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Explosion
+023861f0fa9c11a5e955d466bbe03d9d Assembly-CSharp.dll:.EnemyPink
 56eb765cf143d8af3853c4acbac41e7f Assembly-CSharp.dll:.Spaceship
 fd80a94d65bcf947968ae20244d054a4 Assembly-CSharp.dll:.Player2
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -146,8 +148,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 d5c0c7654716fcbee1919d9e434bac56 Assembly-CSharp.dll:.EnemyRed
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-b291857a6f47563048f58a5d0a2c37e5 Assembly-CSharp.dll:.Bullet
-023861f0fa9c11a5e955d466bbe03d9d Assembly-CSharp.dll:.EnemyPink
-edd8b566d5d724804342a1afeeeef8cd Assembly-CSharp.dll:.EnemyGrey
-afc4800976a8731ece73cb9c2bf82a8a Assembly-CSharp.dll:.EnemyMissile
 39aba418621fd6a22e5f900554b945a9 Assembly-CSharp.dll:.ScoreScreen
+b291857a6f47563048f58a5d0a2c37e5 Assembly-CSharp.dll:.Bullet
+afc4800976a8731ece73cb9c2bf82a8a Assembly-CSharp.dll:.EnemyMissile

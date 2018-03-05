@@ -17,10 +17,10 @@ public class Bullet : MonoBehaviour
 		GetComponent<Rigidbody2D>().AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Force); // Move forward
 	}
 
-	void OnTriggerEnter2D(Collider2D thing)									// On hit function
+	void OnTriggerEnter2D(Collider2D thing)																		// On hit function
 	{
-		string layerName = LayerMask.LayerToName(thing.gameObject.layer);	// Get layer name
-		if(layerName == "Player" || layerName == "Wall")					// If layer is a player or a wall
-			Destroy(gameObject);											// Delete bullet
+		string layerName = LayerMask.LayerToName(thing.gameObject.layer);										// Get layer name
+		if(layerName == "Player" || layerName == "Wall" || layerName == "Bomb" || layerName == "BulletWall")	// If layer is a player or a wall or a bomb or the bullet wall
+			Destroy(gameObject);																				// Delete bullet
 	}
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-	static public bool solo;
-	static SoundManager exist;
+	public static SoundManager instance;
 	private AudioSource[] music;
 	//PlayerPrefs.SetFloat("soundVolume", currentVolume);  //Note that you need to keep the volume in a variable called currentVolume or whatever you name it.
 
@@ -13,18 +12,16 @@ public class SoundManager : MonoBehaviour
 	{
 		//currentVolume = PlayerPrefs.GetFloat("soundVolume");
 		//SetVolume(currentVolume);    //This function has been defined above
+		if (instance == null)					// If no sound manager exist
+			instance = this;					// This sound manager exist
+		else									// If a sound manager already exist
+			Destroy(gameObject);				// Destroy this sound manager
+		DontDestroyOnLoad(gameObject);			// Stay alive after scene loadings
 		music = GetComponents<AudioSource>();
-		if (exist == null)								// If no sound manager exist
-		{
-			exist = this;								// This sound manager exist
-			DontDestroyOnLoad(transform.gameObject);	// Stay alive after scene loadings
-			if (Random.value < 0.5)						// Randomly play menu music 1 or 2
-				PlaySound(music[0]);
-			else
-				PlaySound(music[1]);
-		}
-		else											// If a sound manager already exist
-			Destroy(gameObject);						// Destroy this sound manager
+		if (Random.value < 0.5)					// Randomly play menu music 1 or 2
+			PlaySound(music[0]);
+		else
+			PlaySound(music[1]);
 	}
 
 	public void PlaySound(AudioSource sound)			// Play sound function

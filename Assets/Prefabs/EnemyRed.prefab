@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4935306063630210}
-  - component: {fileID: 114403055458584680}
+  - component: {fileID: 114743696055041664}
   - component: {fileID: 212369162001832082}
   - component: {fileID: 95752702503660344}
   - component: {fileID: 61168056220361004}
@@ -193,7 +193,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114403055458584680
+--- !u!114 &114743696055041664
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -201,13 +201,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1637894218194120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bd01a5c0c505cf48a24647a34acc294, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d8482542e7a97f45be286b6b0dd76e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPink: 0
+  isRed: 1
+  isGrey: 0
+  isMissile: 0
   speed: 0.75
-  fireRate: 2
+  fireRate: 1
+  pinkTurnRate: 0
   score: 20
   bullet: {fileID: 1143780688082568, guid: 214eccdd9d7e8274f8139757ecdb2918, type: 2}
+  greyExtraBullet: {fileID: 0}
   explosion: {fileID: 1141632765255872, guid: ecf97e7e41487c747ae4f9a7c82232bf, type: 2}
 --- !u!212 &212369162001832082
 SpriteRenderer:

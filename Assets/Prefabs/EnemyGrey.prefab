@@ -99,11 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8482542e7a97f45be286b6b0dd76e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPink: 0
+  isRed: 0
+  isGrey: 1
+  isMissile: 0
   speed: 1
-  fireRate: 1.5
+  fireRate: 1
+  pinkTurnRate: 0
   score: 30
-  bullet1: {fileID: 1434355590855100, guid: e2e3edcb6eb61734f9e5cca93ee8729e, type: 2}
-  bullet2: {fileID: 1431960878300560, guid: d2263a1b0a7765c4e8155f94c44dd589, type: 2}
+  bullet: {fileID: 1431960878300560, guid: d2263a1b0a7765c4e8155f94c44dd589, type: 2}
+  greyExtraBullet: {fileID: 1434355590855100, guid: e2e3edcb6eb61734f9e5cca93ee8729e,
+    type: 2}
   explosion: {fileID: 1141632765255872, guid: ecf97e7e41487c747ae4f9a7c82232bf, type: 2}
 --- !u!212 &212330252586895824
 SpriteRenderer:

@@ -18,19 +18,19 @@ public class MainMenu : MonoBehaviour
 	void Start()
 	{
 		settingsMenuIsActive = false;
-		SoundManager.solo = false;
+		GameManager.soloPlay = false;
 	}
 
 	void OnMouseUp()									// On click function	
 	{
 		if(isSoloButton)								// If button is "Solo"
 		{
-			SoundManager.solo = true;					// Warn the game manager
+			GameManager.soloPlay = true;				// Warn the game manager
 			SceneManager.LoadScene(1);					// Load game
 		}
 		if(isVersusButton)								// If button is "Versus"
 		{
-			SoundManager.solo = false;					// Warn the game manager
+			GameManager.soloPlay = false;				// Warn the game manager
 			SceneManager.LoadScene(1);					// Load game
 		}
 		if(isSettingsButton)							// If button is "Settings"
@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
 			Application.Quit();							// Quit the game
 	} 
 
-	void OpenSettings()																		// Open settings functio
+	void OpenSettings()																		// Open settings function
 	{
 		GetComponent<Renderer>().material.color = new Color32(200,0,0,255);					// Maintain red color on button
 		SettingsMenu.SetActive(true);														// Turn on settings menu
