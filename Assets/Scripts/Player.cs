@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 		if(layerName == "Bullet (Enemy)" || layerName == "Enemy")								// If layer is an enemy bullet or an enemy
 		{
 			isDead = true;																		// Avoid firing and bombing while waiting for the game over
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[16]);	// Play player death sound
 			Instantiate(Explosion, transform.position, transform.rotation);						// Explode
 			GetComponent<SpriteRenderer>().enabled = false;										// Hide player sprite
 			GetComponent<BoxCollider2D>().enabled = false;										// Turn off player hitbox
@@ -110,14 +111,21 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	IEnumerator AllowMissiles()															// Missile ready indicators display function
+	IEnumerator AllowMissiles()																	// Missile ready indicators display function
 	{
-		missilesReady = true;															// Missiles are ready
-		transform.GetChild(1).transform.GetComponent<SpriteRenderer>().enabled = true;	// Show the player aura
-		transform.GetChild(2).transform.GetComponent<MeshRenderer>().enabled = true;	// Show the text "Missiles Ready"
-		yield return new WaitForSeconds(2);												// Wait 2 seconds
-		transform.GetChild(2).transform.GetComponent<MeshRenderer>().enabled = false;	// Hide the text "Missiles Ready"
-		yield return null;																// Return
+		missilesReady = true;																	// Missiles are ready
+		if (GameManager.firstMissiles)															// If first missile launch
+		{
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[14]);	// Play first missiles sound
+			GameManager.firstMissiles = false;													// First missiles are warned
+		}
+		else
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[15]);	// Play missiles ready sound
+		transform.GetChild(1).transform.GetComponent<SpriteRenderer>().enabled = true;			// Show the player aura
+		transform.GetChild(2).transform.GetComponent<MeshRenderer>().enabled = true;			// Show the text "Missiles Ready"
+		yield return new WaitForSeconds(2);														// Wait 2 seconds
+		transform.GetChild(2).transform.GetComponent<MeshRenderer>().enabled = false;			// Hide the text "Missiles Ready"
+		yield return null;																		// Return
 	}
 
 	void Shoot()																			// Shoot function
@@ -128,7 +136,7 @@ public class Player : MonoBehaviour
 
 	void ThrowBomb()																		// Bomb throw function
 	{
-		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[7]);	// Play explosion sound
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[9]);	// Play bomb sound
 		if (bombCount == 3)
 		GameObject.Find("BombIcon1").GetComponent<SpriteRenderer>().enabled = false;		// Remove an icon from the interface
 		if (bombCount == 2)
@@ -141,6 +149,7 @@ public class Player : MonoBehaviour
 
 	void LaunchMissiles(bool player1Launch)																					// Launch missiles function
 	{
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[10]);									// Play missile launch sound
 		if (player1Launch)																									// If player 1 is the launcher
 			GameObject.Find("EnemySpawner(Clone)").GetComponent<EnemySpawner>().RedirectSpawnMissiles(missileCount,true);	// Ask the enemy spawner to spawn missiles on player 2
 		else																												// If player 2 is the launcher
@@ -156,7 +165,7 @@ public class Player : MonoBehaviour
 
 	IEnumerator GameOver()																							// Game over function
 	{
-		yield return new WaitForSeconds(1);																			// Wait one second
+		yield return new WaitForSeconds(1.5f);																			// Wait one second
 		if (GameManager.soloPlay)                                                     								// If game is solo
 		{
 			Instantiate(GameOverScreen, GameOverScreen.transform.position, GameOverScreen.transform.rotation);		// Create a solo game over screen

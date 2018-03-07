@@ -6,9 +6,12 @@ public class Background : MonoBehaviour
 {
 	public GameObject background;
 	public float speed;
+    private AudioSource[] sound;
 	
 	void Start()
-	{}
+	{
+        sound = GameObject.Find("SoundManager").GetComponents<AudioSource>();   // Get sounds from the sound manager
+    }
 
 	void Update()
 	{
@@ -19,7 +22,8 @@ public class Background : MonoBehaviour
 
 	public void Accelerate()
 	{
-		speed += 2f;	// Speed up background
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(sound[13]);	// Play rank up sound
+		speed += 2f;	                                                                    // Speed up background
 	}
 
 	public IEnumerator WhiteToYellow()											// Change backgrounds color gradually from neutral to yellow

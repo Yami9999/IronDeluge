@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 87157605}
-  speed: 0
+  speed: 0.2
 --- !u!1 &146458410
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1168084874}
-  speed: 0
+  speed: 0.2
 --- !u!212 &1168084877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1409008472}
-  speed: 0
+  speed: 0.2
 --- !u!1 &1470677968
 GameObject:
   m_ObjectHideFlags: 0

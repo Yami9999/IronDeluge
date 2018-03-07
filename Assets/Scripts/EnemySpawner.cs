@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnMissiles(int missileCount,bool isPlayer1)                                      // Spawn missiles function
     {
+        yield return new WaitForSeconds(1f);                                                        // Wait one second
         while (missileCount > 0)                                                                    // While there are missiles to fire
         {
             if (isPlayer1)                                                                          // If the launcher is player 1
@@ -64,7 +65,6 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(missileSpawnRate);                                      // Wait for missile spawn rate
             missileCount -= 1;                                                                      // Decrease the missile count
         }
-        yield return null;
     }
 
     IEnumerator Difficulty()                                                                        // Progressive difficulty function

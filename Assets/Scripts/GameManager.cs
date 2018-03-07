@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject ScoreScreen;
     public GameObject CountDown;
     public static bool isPaused;
+    public static bool firstMissiles;
     public static GameObject PauseInstance;
     private bool introHasEnded;
     private GameObject PauseIntroInstance;
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviour
             GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[2]);                           // Play pre battle music
             isPaused = false;                                                                                           // Initialize to unpaused
             introHasEnded = false;                                                                                      // Initialize to no ended
+            firstMissiles = true;                                                                                       // Initialize to first missiles
             PauseIntroInstance = Instantiate(PauseIntro,PauseIntro.transform.position,PauseIntro.transform.rotation);   // Create the intro pause
         }
     }
@@ -80,18 +82,22 @@ public class GameManager : MonoBehaviour
     {
         Destroy(PauseIntroInstance);                                                                                    // Delete the intro pause
         GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[2]);                               // Stop pre battle music
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[18]);                              // Play start sound
         CountDownInstance = Instantiate(CountDown,CountDown.transform.position,CountDown.transform.rotation);           // Create a countdown
         yield return new WaitForSeconds(1f);                                                                            // Wait a second
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[18]);                              // Play rank up sound
         CountDownInstance.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMesh>().text = "2";              // Display 2
         CountDownInstance.transform.GetChild(1).transform.GetChild(1).GetComponent<TextMesh>().text = "2";
         CountDownInstance.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMesh>().color = Color.yellow;    // Change color to yellow
         CountDownInstance.transform.GetChild(1).transform.GetChild(1).GetComponent<TextMesh>().color = Color.yellow;
         yield return new WaitForSeconds(1f);                                                                            // Wait a second
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[18]);                              // Play rank up sound
         CountDownInstance.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMesh>().text = "1";              // Display 1
         CountDownInstance.transform.GetChild(1).transform.GetChild(1).GetComponent<TextMesh>().text = "1";
         CountDownInstance.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;       // Change color to orange
         CountDownInstance.transform.GetChild(1).transform.GetChild(1).GetComponent<TextMesh>().color = Color.red;
         yield return new WaitForSeconds(1f);                                                                            // Wait a second
+        GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[12]);                              // Play rank up sound
         Destroy(CountDownInstance);                                                                                     // Delete countdown
         StartGame();
     }
@@ -108,6 +114,7 @@ public class GameManager : MonoBehaviour
         //else                                                                                          // If game is versus
             //Instantiate(Player2, Player2.transform.position, Player2.transform.rotation);             // Create player 2
         Instantiate(EnemySpawner, EnemySpawner.transform.position, EnemySpawner.transform.rotation);    // Create the enemy spawner
+        introHasEnded = true;
     }
 
     public void Pause()                                                                                     // Pause function

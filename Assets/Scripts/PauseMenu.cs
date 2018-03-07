@@ -10,13 +10,19 @@ public class PauseMenu : MonoBehaviour
 	private bool isPaused;
 	private AudioSource[] music;
 
+	void Start()
+	{
+		music = GameObject.Find("SoundManager").GetComponents<AudioSource>();				// Get musics from the sound manager
+	}
+
 	void OnMouseUp()						// On click function
 	{
-		isPaused = GameManager.isPaused;	// Get game state from Manager.cs
-		if(isResumeButton && isPaused)		// If button is "Resume" and game is paused
-			Unpause();						// Unpause
-		if(isReturnButton)					// If button is "Return to main menu"
-			ReturnToMenu();					// Return to menu
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[17]);	// Play menu sound
+		isPaused = GameManager.isPaused;													// Get game state from Manager.cs
+		if(isResumeButton && isPaused)														// If button is "Resume" and game is paused
+			Unpause();																		// Unpause
+		if(isReturnButton)																	// If button is "Return to main menu"
+			ReturnToMenu();																	// Return to menu
 	} 
 
 	void Unpause()								// Unpause function
@@ -29,7 +35,6 @@ public class PauseMenu : MonoBehaviour
 	void ReturnToMenu()																				// Return to menu function
 	{
 		Time.timeScale = 1;																			// Unlock time
-		music = GameObject.Find("SoundManager").GetComponents<AudioSource>();						// Get musics from the sound manager
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[3]);			// Stop battle musics
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[4]);
 		if (Random.value < 0.5)																		// Randomly play menu music 1 or 2

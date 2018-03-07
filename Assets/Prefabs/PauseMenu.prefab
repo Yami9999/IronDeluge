@@ -52,10 +52,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4354761270133558}
+  - component: {fileID: 114473657100567822}
+  - component: {fileID: 114761030855880800}
   - component: {fileID: 23617389107204336}
   - component: {fileID: 102985694797864432}
-  - component: {fileID: 114761030855880800}
-  - component: {fileID: 114473657100567822}
   - component: {fileID: 61039254367627330}
   m_Layer: 5
   m_Name: Resume
@@ -87,10 +87,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4613512604309266}
+  - component: {fileID: 114472177476021122}
+  - component: {fileID: 114023504918254932}
   - component: {fileID: 23438306253068448}
   - component: {fileID: 102911046315055334}
-  - component: {fileID: 114023504918254932}
-  - component: {fileID: 114472177476021122}
   - component: {fileID: 61617385512416500}
   m_Layer: 5
   m_Name: ReturnToMainMenu
@@ -466,7 +466,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c696edb323953e34da7349f654287342, type: 3}
-  m_Color: {r: 0.034482718, g: 1, b: 0, a: 0.409}
+  m_Color: {r: 0.034482718, g: 1, b: 0, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

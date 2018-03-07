@@ -16,12 +16,13 @@ public class GameOver : MonoBehaviour
 		Time.timeScale = 0;														// Time stop
 	}
 
-	void OnMouseUp()		// On click function
+	void OnMouseUp()																		// On click function
 	{
-		if(isRematchButton)	// If button is "Rematch"
-			Rematch();		// Rematch
-		if(isReturnButton)	// If button is "Return to main menu"
-			ReturnToMenu();	// Return to menu
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[17]);	// Play menu sound
+		if(isRematchButton)																	// If button is "Rematch"
+			Rematch();																		// Rematch
+		if(isReturnButton)																	// If button is "Return to main menu"
+			ReturnToMenu();																	// Return to menu
 	}
 
 	void Rematch()					

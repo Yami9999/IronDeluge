@@ -18,15 +18,19 @@ public class Enemy : MonoBehaviour
 	private float lastShot;
 	private float lastTurn;
 	private Vector2 turnDirection;
+	private AudioSource[] sound;
 
 	void Start()
 	{
-		lastShot = 0;													// Initialize last shot time
-		lastTurn = 0;													// Initialize last turn time
-		if (transform.position.x >= -8.5 && transform.position.x < 0)	// If enemy is on left screen
-			turnDirection = Vector2.left;								// Initialize turn direction to left
-		else															// If enemy is on right screen
-			turnDirection = Vector2.right;								// Initialize turn direction to left
+		sound = GameObject.Find("SoundManager").GetComponents<AudioSource>();					// Get sounds from the sound manager
+		if (isMissile)																			// If ennemy is missile
+			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(sound[11]);	// Play missile sound
+		lastShot = 0;																			// Initialize last shot time
+		lastTurn = 0;																			// Initialize last turn time
+		if (transform.position.x >= -8.5 && transform.position.x < 0)							// If enemy is on left screen
+			turnDirection = Vector2.left;														// Initialize turn direction to left
+		else																					// If enemy is on right screen
+			turnDirection = Vector2.right;														// Initialize turn direction to left
 	}
 
 	void Update()

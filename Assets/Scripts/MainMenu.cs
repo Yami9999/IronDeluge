@@ -14,34 +14,37 @@ public class MainMenu : MonoBehaviour
 	public GameObject VersusButton;
 	public GameObject ExitButton;
 	public static bool settingsMenuIsActive;
+	private AudioSource[] sound;
 
 	void Start()
 	{
+		sound = GameObject.Find("SoundManager").GetComponents<AudioSource>();	// Get sounds from the sound manager
 		settingsMenuIsActive = false;
 		GameManager.soloPlay = false;
 	}
 
-	void OnMouseUp()									// On click function	
+	void OnMouseUp()																		// On click function	
 	{
-		if(isSoloButton)								// If button is "Solo"
+		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(sound[17]);	// Play menu sound
+		if(isSoloButton)																	// If button is "Solo"
 		{
-			GameManager.soloPlay = true;				// Warn the game manager
-			SceneManager.LoadScene(1);					// Load game
+			GameManager.soloPlay = true;													// Warn the game manager
+			SceneManager.LoadScene(1);														// Load game
 		}
-		if(isVersusButton)								// If button is "Versus"
+		if(isVersusButton)																	// If button is "Versus"
 		{
-			GameManager.soloPlay = false;				// Warn the game manager
-			SceneManager.LoadScene(1);					// Load game
+			GameManager.soloPlay = false;													// Warn the game manager
+			SceneManager.LoadScene(1);														// Load game
 		}
-		if(isSettingsButton)							// If button is "Settings"
+		if(isSettingsButton)																// If button is "Settings"
 		{
-			if(SettingsMenu.activeInHierarchy == false)	// If settings menu is off
-				OpenSettings();							// Open settings
-			else										// If settings menu is on
-				CloseSettings();						// Close settings
+			if(SettingsMenu.activeInHierarchy == false)										// If settings menu is off
+				OpenSettings();																// Open settings
+			else																			// If settings menu is on
+				CloseSettings();															// Close settings
 		}
-		if(isExitButton)								// If button is "Exit"
-			Application.Quit();							// Quit the game
+		if(isExitButton)																	// If button is "Exit"
+			Application.Quit();																// Quit the game
 	} 
 
 	void OpenSettings()																		// Open settings function
