@@ -24,11 +24,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (instance == null)           // Singleton pattern
-            instance = this;
-        else
-            Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);                                          // Make the game manager persistent
+        music = GameObject.Find("SoundManager").GetComponents<AudioSource>();   // Get musics
+        SceneManager.LoadScene(1);                                              // Load menu
     }
 
     void OnEnable()
@@ -39,6 +37,27 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;  // Stop waiting for scene load
+    }
+
+    void OnSceneLoaded(Scene scene,LoadSceneMode mode)                                                                  // On scene loaded function
+    {   
+        if (scene.name == "Main_Menu")                     	                                                            // If main menu
+        {
+            if (Random.value < 0.5)							                                                            // Randomly play menu music 1 or 2
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[0]);
+            else
+                GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[1]);
+        }
+        if (scene.name == "Main_Scene")                                                                                 // If main scene
+        {
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[0]);                           // Stop menu musics via the sound manager
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[1]);
+            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[2]);                           // Play pre battle music
+            isPaused = false;                                                                                           // Initialize to unpaused
+            introHasEnded = false;                                                                                      // Initialize to no ended
+            firstMissiles = true;                                                                                       // Initialize to first missiles
+            PauseIntroInstance = Instantiate(PauseIntro,PauseIntro.transform.position,PauseIntro.transform.rotation);   // Create the intro pause
+        }
     }
 
     void Update()
@@ -60,21 +79,6 @@ public class GameManager : MonoBehaviour
                     return;                                                                                     // Avoid pause/unpause on a same tick
                 }
             }
-        }
-    }
-
-    void OnSceneLoaded(Scene scene,LoadSceneMode mode)                                                                  // On scene loaded function
-    {   
-        if (scene.name == "Main_Scene")                                                                                 // If main scene
-        {
-            music = GameObject.Find("SoundManager").GetComponents<AudioSource>();                                       // Get musics
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[0]);                           // Stop menu musics via the sound manager
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[1]);
-            GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[2]);                           // Play pre battle music
-            isPaused = false;                                                                                           // Initialize to unpaused
-            introHasEnded = false;                                                                                      // Initialize to no ended
-            firstMissiles = true;                                                                                       // Initialize to first missiles
-            PauseIntroInstance = Instantiate(PauseIntro,PauseIntro.transform.position,PauseIntro.transform.rotation);   // Create the intro pause
         }
     }
 
@@ -111,8 +115,8 @@ public class GameManager : MonoBehaviour
         Instantiate(Player1, Player1.transform.position, Player1.transform.rotation);                   // Create player 1
         if (soloPlay)                                                                                   // If game is solo
             Instantiate(ScoreScreen, ScoreScreen.transform.position, ScoreScreen.transform.rotation);   // Create score screen
-        //else                                                                                          // If game is versus
-            //Instantiate(Player2, Player2.transform.position, Player2.transform.rotation);             // Create player 2
+        else                                                                                            // If game is versus
+            Instantiate(Player2, Player2.transform.position, Player2.transform.rotation);               // Create player 2
         Instantiate(EnemySpawner, EnemySpawner.transform.position, EnemySpawner.transform.rotation);    // Create the enemy spawner
         introHasEnded = true;
     }

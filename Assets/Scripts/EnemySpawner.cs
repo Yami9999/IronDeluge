@@ -47,17 +47,17 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void RedirectSpawnMissiles(int missileCount, bool isPlayer1) // Access to the spawn missiles function
+    public void RedirectSpawnMissiles(int missileCount, bool isFromPlayer1) // Access to the spawn missiles function
     {
-        StartCoroutine(SpawnMissiles(missileCount,isPlayer1));
+        StartCoroutine(SpawnMissiles(missileCount,isFromPlayer1));
     }
 
-    IEnumerator SpawnMissiles(int missileCount,bool isPlayer1)                                      // Spawn missiles function
+    IEnumerator SpawnMissiles(int missileCount,bool isFromPlayer1)                                  // Spawn missiles function
     {
-        yield return new WaitForSeconds(1f);                                                        // Wait one second
+        yield return new WaitForSeconds(1.25f);                                                     // Wait one second
         while (missileCount > 0)                                                                    // While there are missiles to fire
         {
-            if (isPlayer1)                                                                          // If the launcher is player 1
+            if (isFromPlayer1)                                                                      // If the launcher is player 1
                 randomX = Random.Range(0.5f,8f);                                                    // Take a random value above the right terrain
             else                                                                                    // If the launcher is player 2
                 randomX = Random.Range(-8f,-0.5f);                                                  // Take a random value above the left terrain

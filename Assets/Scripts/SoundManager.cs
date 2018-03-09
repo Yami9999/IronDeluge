@@ -6,22 +6,13 @@ public class SoundManager : MonoBehaviour
 {
 	public static SoundManager instance;
 	private AudioSource[] music;
-	//PlayerPrefs.SetFloat("soundVolume", currentVolume);  //Note that you need to keep the volume in a variable called currentVolume or whatever you name it.
+	private int index;
+	public static bool isMuted;
 
 	void Start()
 	{
-		//currentVolume = PlayerPrefs.GetFloat("soundVolume");
-		//SetVolume(currentVolume);    //This function has been defined above
-		if (instance == null)					// If no sound manager exist
-			instance = this;					// This sound manager exist
-		else									// If a sound manager already exist
-			Destroy(gameObject);				// Destroy this sound manager
-		DontDestroyOnLoad(gameObject);			// Stay alive after scene loadings
-		music = GetComponents<AudioSource>();
-		if (Random.value < 0.5)					// Randomly play menu music 1 or 2
-			PlaySound(music[0]);
-		else
-			PlaySound(music[1]);
+		DontDestroyOnLoad(gameObject);	// Make the sound manager persistent
+		isMuted = false;				// Game is not muted
 	}
 
 	public void PlaySound(AudioSource sound)			// Play sound function
@@ -39,8 +30,29 @@ public class SoundManager : MonoBehaviour
         GetComponent<AudioSource>().volume = val;
     }
 
-	public static void Mute(AudioSource sound)			// Mute function
+	public void Mute()							// Mute function
 	{
-		sound.volume = 0f;
+		index = 0;
+		music = GetComponents<AudioSource>();	// GetComponent musics
+		if(!isMuted)							// If game is note muted
+		{
+			while(index != 19)					// Take all audio sources
+			{
+				music[index].mute = true;		// Mute them
+				++index;						// Increment index
+			}
+			isMuted = true;						// Game is now muted
+			return;								// Avoid mute/unmute on same tick
+		}
+		if(isMuted)								// If game is muted
+		{
+			while(index != 19)					// Take all audio sources
+			{
+				music[index].mute = false;		// Unmute them
+				++index;						// Increment index
+			}
+			isMuted = false;					// Game is now unmuted
+			return;								// Avoid mute/unmute on same tick
+		}
 	}
 }

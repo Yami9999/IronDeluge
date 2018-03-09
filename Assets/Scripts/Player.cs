@@ -13,21 +13,29 @@ public class Player : MonoBehaviour
 	public GameObject GameOverScreen;
 	public GameObject VictoryScreen1;
 	public GameObject VictoryScreen2;
+	public GameObject Warning;
 	static public int killCount1;
 	static public int killCount2;
 	static public int bombCount;
 	private AudioSource[] music;
+	private bool shootKeyIsPressed;
+	private bool bombKeyIsPressed;
+	private bool missileKeyIsPressed;
 	private bool isDead;
 	private bool missilesReady;
 	private float lastMissileSpawned;
 	private float randomX;
+	private GameObject WarningInstance;
 	
 	void Start()
 	{
 		music = GameObject.Find("SoundManager").GetComponents<AudioSource>(); 	// Get musics and sounds
 		bombCount = 3;															// Set 3 bombs
-		killCount1 = 0;
+		killCount1 = 0;															// Set kill counts
 		killCount2 = 0;
+		shootKeyIsPressed = false;												// No keys are pressed
+		bombKeyIsPressed = false;
+		missileKeyIsPressed = false;
 	}
 	
 	void Update()
@@ -71,43 +79,73 @@ public class Player : MonoBehaviour
 
 	void InputsPlayer1()
 	{
-		if (Input.GetKey("z") || Input.GetKey("w"))																// Movements
+		if (Input.GetAxisRaw("P1 Up") == 1)																		// Movements
         	GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("s"))
+        if (Input.GetAxisRaw("P1 Down") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.down * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("q") || Input.GetKey("a"))
+        if (Input.GetAxisRaw("P1 Left") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("d"))
+        if (Input.GetAxisRaw("P1 Right") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Force);
 		if (!isDead)																							// If player is not dead
 		{
-			if (Input.GetKeyDown("k"))																			// If shoot button is pressed
+			if (Input.GetAxisRaw("P1 Shoot") == 1 && !shootKeyIsPressed)										// If shoot button is pressed and key is not already pressed
+			{
 				Shoot();																						// Shoot
-			if (Input.GetKeyDown("l") && bombCount >= 1)														// If bomb button is pressed and there are bombs remaining
+				shootKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P1 Shoot") == 0)																// If shoot button is released
+				shootKeyIsPressed = false;																		// Key is no more pressed (avoid auto-fire)
+			if (Input.GetAxisRaw("P1 Bomb") == 1 && bombCount >= 1 && !bombKeyIsPressed)						// If bomb button is pressed and there are bombs remaining and key is not already pressed
+			{
 				ThrowBomb();																					// Throw bomb
-			if ((Input.GetKeyDown("m") || Input.GetKeyDown(",")) && missilesReady)								// If missiles buttons are pressed and missiles are allowed
+				bombKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P1 Bomb") == 0)																// If bomb button is released
+				bombKeyIsPressed = false;																		// Key is no more pressed (avoid auto-fire)
+			if (Input.GetAxisRaw("P1 Missiles") == 1 && missilesReady && !missileKeyIsPressed)					// If missiles buttons are pressed and missiles are allowed and key is not already pressed
+			{
 				LaunchMissiles(true);																			// Launch missiles while warning it's from player 1
+				missileKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P1 Missiles") == 0)															// If missiles button is released
+				missileKeyIsPressed = false;																	// Key is no more pressed (avoid auto-fire)
 		}
 	}
 
 	void InputsPlayer2()
 	{
-		if (Input.GetKey("up"))																					// Movements
+		if (Input.GetAxisRaw("P2 Up") == 1)																		// Movements
         	GetComponent<Rigidbody2D>().AddForce(Vector2.up * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("down"))
+        if (Input.GetAxisRaw("P2 Down") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.down * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("left"))
+        if (Input.GetAxisRaw("P2 Left") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.left * speed * Time.deltaTime, ForceMode2D.Force);
-        if (Input.GetKey("right"))
+        if (Input.GetAxisRaw("P2 Right") == 1)
             GetComponent<Rigidbody2D>().AddForce(Vector2.right * speed * Time.deltaTime, ForceMode2D.Force);
 		if (!isDead)																							// If player is not dead
 		{
-			if (Input.GetKeyDown("[1]"))																		// If shoot button is pressed
+			if (Input.GetAxisRaw("P2 Shoot") == 1 && !shootKeyIsPressed)										// If shoot button is pressed and key is not already pressed
+			{
 				Shoot();																						// Shoot
-			if (Input.GetKeyDown("[2]") && bombCount >= 1)														// If bomb button is pressed and there are bombs remaining
+				shootKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P2 Shoot") == 0)																// If shoot button is released
+				shootKeyIsPressed = false;																		// Key is no more pressed (avoid auto-fire)
+			if (Input.GetAxisRaw("P2 Bomb") == 1 && bombCount >= 1 && !bombKeyIsPressed)						// If bomb button is pressed and there are bombs remaining and key is not already pressed
+			{
 				ThrowBomb();																					// Throw bomb
-			if ((Input.GetKeyDown("[3]") || Input.GetKeyDown(",")) && missilesReady)							// If missiles buttons are pressed and missiles are allowed
-				LaunchMissiles(true);																			// Launch missiles
+				bombKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P2 Bomb") == 0)																// If bomb button is released
+				bombKeyIsPressed = false;																		// Key is no more pressed (avoid auto-fire)
+			if (Input.GetAxisRaw("P2 Missiles") == 1 && missilesReady && !missileKeyIsPressed)					// If missiles buttons are pressed and missiles are allowed and key is not already pressed
+			{
+				LaunchMissiles(false);																			// Launch missiles while warning it's from player 1
+				missileKeyIsPressed = true;																		// Key is pressed
+			}
+			if (Input.GetAxisRaw("P2 Missiles") == 0)															// If missiles button is released
+				missileKeyIsPressed = false;																	// Key is no more pressed (avoid auto-fire)
 		}
 	}
 
@@ -151,9 +189,15 @@ public class Player : MonoBehaviour
 	{
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[10]);									// Play missile launch sound
 		if (player1Launch)																									// If player 1 is the launcher
+		{
+			StartCoroutine(ShowWarning(true));																				// Show Warning for player 2;
 			GameObject.Find("EnemySpawner(Clone)").GetComponent<EnemySpawner>().RedirectSpawnMissiles(missileCount,true);	// Ask the enemy spawner to spawn missiles on player 2
+		}
 		else																												// If player 2 is the launcher
+		{
+			StartCoroutine(ShowWarning(false));																				// Show Warning for player 1;
 			GameObject.Find("EnemySpawner(Clone)").GetComponent<EnemySpawner>().RedirectSpawnMissiles(missileCount,false);	// Ask the enemy spawner to spawn missiles on player 1
+		}
 		transform.GetChild(1).transform.GetComponent<SpriteRenderer>().enabled = false;										// Hide player aura
 		transform.GetChild(2).transform.GetComponent<MeshRenderer>().enabled = false;										// Hide the text "Missiles Ready"
 		if (isPlayer1)																										// If player 1
@@ -185,5 +229,24 @@ public class Player : MonoBehaviour
 			}
 		}
 		Destroy(gameObject);																						// Delete player
+	}
+
+	IEnumerator ShowWarning(bool isFromPlayer1)															// Show missile warning function
+	{
+		if(isFromPlayer1)																				// If warning comes from player 1
+			WarningInstance = Instantiate(Warning,new Vector2(4.3f,0f),Warning.transform.rotation);		// Create warning on player 2 screen
+		else																							// If warning comes from player 2
+			WarningInstance = Instantiate(Warning,new Vector2(-4.3f,0f),Warning.transform.rotation);	// Create warning on player 1 screen
+		WarningInstance.GetComponent<SpriteRenderer>().material.color = new Color32(200,0,0,255);		// Change color to red
+		yield return new WaitForSeconds(0.25f);															// Wait
+		WarningInstance.GetComponent<SpriteRenderer>().material.color = new Color32(100,0,0,255);		// Change color to dark red
+		yield return new WaitForSeconds(0.25f);															// Wait
+		WarningInstance.GetComponent<SpriteRenderer>().material.color = new Color32(200,0,0,255);		// Change color to red
+		yield return new WaitForSeconds(0.25f);															// Wait
+		WarningInstance.GetComponent<SpriteRenderer>().material.color = new Color32(100,0,0,255);		// Change color to dark red
+		yield return new WaitForSeconds(0.25f);															// Wait
+		WarningInstance.GetComponent<SpriteRenderer>().material.color = new Color32(200,0,0,255);		// Change color to red
+		yield return new WaitForSeconds(0.25f);															// Wait
+		Destroy(WarningInstance);																		// Delete warning
 	}
 }

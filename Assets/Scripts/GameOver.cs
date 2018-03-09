@@ -30,7 +30,7 @@ public class GameOver : MonoBehaviour
 		Time.timeScale = 1;																		// Time resume
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[5]);		// Stop game over musics
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[6]);
-		SceneManager.LoadScene(1);																// Reload game scene
+		SceneManager.LoadScene(2);																// Reload game scene
 	}
 
 	void ReturnToMenu()																			// Return to menu function
@@ -38,10 +38,6 @@ public class GameOver : MonoBehaviour
 		Time.timeScale = 1;																		// Time resume
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[5]);		// Stop game over musics
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[6]);
-		if (Random.value < 0.5)																	// Randomly play menu music 1 or 2
-			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[0]);
-		else
-			GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[1]);
-		SceneManager.LoadScene(0);																// Load main menu scene
+		SceneManager.LoadScene(1);																// Load main menu scene
 	}
 }

@@ -301,6 +301,7 @@ MonoBehaviour:
     type: 2}
   VictoryScreen2: {fileID: 1688978455278312, guid: dd972dac47a0bc84eaf22bfa5130635a,
     type: 2}
+  Warning: {fileID: 1130757784786302, guid: 3ce8589296dcee545bf45f6823469529, type: 2}
 --- !u!212 &212756558626250046
 SpriteRenderer:
   m_ObjectHideFlags: 1

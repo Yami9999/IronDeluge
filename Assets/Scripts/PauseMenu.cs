@@ -37,10 +37,6 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = 1;																			// Unlock time
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[3]);			// Stop battle musics
 		GameObject.Find("SoundManager").GetComponent<SoundManager>().StopSound(music[4]);
-		if (Random.value < 0.5)																		// Randomly play menu music 1 or 2
-				GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[0]);
-			else
-				GameObject.Find("SoundManager").GetComponent<SoundManager>().PlaySound(music[1]);
-		SceneManager.LoadScene(0);																	// Load main menu scene
+		SceneManager.LoadScene(1);																	// Load main menu scene
 	}
 }
